@@ -43,13 +43,50 @@ Render the result to the HTML template.
 Publish the website in Localhost.
 
 ## PROGRAM:
+```html
+math.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GST Calculator</title>
+</head>
 
+<body>
 
+<h1>GST Calculator</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Price:</label>
+    <input type="number" name="price"><br><br>
+
+    <label>GST Percentage:</label>
+    <input type="number" name="gst"><br><br>
+
+    <input type="submit" value="Calculate">
+
+</form>
+
+<h2>{{ result }}</h2>
+
+</body>
+```
+```python
+urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.gst),
+]
+```
 ## OUTPUT - SERVER SIDE:
-
+![alt text](op1.jpeg)
 
 ## OUTPUT - WEBPAGE:
-
+![alt text](op2.jpeg)
 
 ## RESULT:
 The a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts is created successfully.
